@@ -7,7 +7,7 @@ import dagger.BindsInstance;
 import dagger.Component;
 
 @AppScope
-@dagger.Component(modules = {PrefModule.class, MockClockModule.class})
+@dagger.Component(modules = {PrefModule.class, MockClockModule.class, MockPresenterModule.class})
 public interface TestAppComponent extends AppComponent {
 
     Clock clock();
@@ -21,6 +21,9 @@ public interface TestAppComponent extends AppComponent {
 
         @BindsInstance
         TestBuilder mockClockModule(MockClockModule clockModule);
+
+        @BindsInstance
+        TestBuilder mockPresenterModule(MockPresenterModule mockPresenterModule);
 
         @BindsInstance
         TestBuilder application(Application application);

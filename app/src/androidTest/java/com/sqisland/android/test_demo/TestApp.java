@@ -18,6 +18,7 @@ public class TestApp extends App {
     protected TestAppComponent createComponent() {
         return DaggerTestAppComponent.builder()
                 .mockClockModule(new MockClockModule())
+                .mockPresenterModule(new MockPresenterModule())
                 .application(this).build();
     }
 

@@ -6,11 +6,11 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class MockClockModule {
+public class MockPresenterModule {
 
     @Provides
     @AppScope
-    Clock provideClock() {
-        return Mockito.mock(Clock.class);
+    MainPresenter provideMainPresenter() {
+        return Mockito.mock(MainPresenter.class);
     }
 }
