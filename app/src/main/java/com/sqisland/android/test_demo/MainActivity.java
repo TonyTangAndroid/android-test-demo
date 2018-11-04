@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements MainPresenter.MainUI {
     }
 
     private void inject() {
-        ((App) getApplication()).getFragmentInjector().inject(this);
+        ((App) getApplication()).activityInjector().inject(this);
     }
 
 

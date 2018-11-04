@@ -4,7 +4,7 @@ package com.sqisland.android.test_demo;
 public class TestApp extends App {
 
     @Override
-    public ActivityInjector getFragmentInjector() {
+    public ActivityInjector activityInjector() {
         return DaggerTestMockerComponent.builder()
                 .testAppComponent((TestAppComponent) component()).build();
     }
