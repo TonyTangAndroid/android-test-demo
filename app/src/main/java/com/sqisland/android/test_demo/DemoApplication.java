@@ -2,23 +2,18 @@ package com.sqisland.android.test_demo;
 
 import android.app.Application;
 
-import javax.inject.Singleton;
-
-import dagger.Component;
-
 public class DemoApplication extends Application {
-  @Singleton
-  @Component(modules = ClockModule.class)
-  public interface ApplicationComponent extends DemoComponent {
-  }
 
-  private final DemoComponent component = createComponent();
+    private DemoComponent component = createComponent();
 
-  protected DemoComponent createComponent() {
-    return DaggerDemoComponent.builder().build();
-  }
+    protected DemoComponent createComponent() {
+        return DaggerDemoComponent
+                .builder()
+                .application(this)
+                .build();
+    }
 
-  public DemoComponent component() {
-    return component;
-  }
+    public DemoComponent component() {
+        return component;
+    }
 }

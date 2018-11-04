@@ -1,8 +1,10 @@
 package com.sqisland.android.test_demo;
 
 public class MockDemoApplication extends DemoApplication {
-  @Override
-  protected DemoComponent createComponent() {
-    return DaggerMainActivityTest_TestComponent.builder().build();
-  }
+    @Override
+    protected TestAppComponent createComponent() {
+        return DaggerTestAppComponent.builder()
+                .mockClockModule(new MockClockModule())
+                .application(this).build();
+    }
 }

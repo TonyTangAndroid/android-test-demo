@@ -1,11 +1,25 @@
 package com.sqisland.android.test_demo;
 
-import javax.inject.Singleton;
+import android.app.Application;
+import android.content.SharedPreferences;
 
+import dagger.BindsInstance;
 import dagger.Component;
 
-@Singleton
-@Component(modules = ClockModule.class)
+@ApplicationScope
+@Component(modules = {SharedPrefModule.class, ClockModule.class})
 public interface DemoComponent {
-  void inject(MainActivity mainActivity);
+
+    Clock clock();
+
+    SharedPreferences sharedPreferences();
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        Builder application(Application application);
+
+        DemoComponent build();
+    }
 }
