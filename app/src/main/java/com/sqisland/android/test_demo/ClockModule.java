@@ -6,7 +6,7 @@ import dagger.Provides;
 @Module
 public class ClockModule {
     @Provides
-    @ApplicationScope
+    @AppScope
     Clock provideClock() {
         return new Clock();
     }

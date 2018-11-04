@@ -7,9 +7,9 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module(includes = ContextModule.class)
-public class SharedPrefModule {
+public class PrefModule {
     @Provides
-    @ApplicationScope
+    @AppScope
     SharedPreferences provideSharedPreferences(Context context) {
         return context.getSharedPreferences("pref_monkey.xml", Context.MODE_PRIVATE);
     }

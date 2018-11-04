@@ -11,7 +11,7 @@ class MainPresenter {
         this.notePagingUI = null;
     }
 
-    void destroy() {
+    void callPresenterMethod() {
     }
 
     void delete(String noteObjectId) {

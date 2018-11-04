@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import dagger.BindsInstance;
 import dagger.Component;
 
-@ApplicationScope
-@Component(modules = {SharedPrefModule.class, ClockModule.class})
-public interface DemoComponent {
+@AppScope
+@Component(modules = {PrefModule.class, ClockModule.class})
+public interface AppComponent {
 
     Clock clock();
 
@@ -20,6 +20,6 @@ public interface DemoComponent {
         @BindsInstance
         Builder application(Application application);
 
-        DemoComponent build();
+        AppComponent build();
     }
 }

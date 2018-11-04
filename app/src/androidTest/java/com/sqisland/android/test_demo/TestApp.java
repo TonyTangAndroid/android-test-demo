@@ -1,7 +1,7 @@
 package com.sqisland.android.test_demo;
 
 
-public class TestMockerApplication extends DemoApplication {
+public class TestApp extends App {
 
     @Override
     public ActivityInjector getFragmentInjector() {

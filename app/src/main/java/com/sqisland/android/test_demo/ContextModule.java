@@ -9,7 +9,7 @@ import dagger.Provides;
 @Module
 public class ContextModule {
     @Provides
-    @ApplicationScope
+    @AppScope
     Context provideSharedPreferences(Application application) {
         return application;
     }

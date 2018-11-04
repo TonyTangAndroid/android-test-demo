@@ -2,12 +2,12 @@ package com.sqisland.android.test_demo;
 
 import android.app.Application;
 
-public class DemoApplication extends Application {
+public class App extends Application {
 
-    private DemoComponent component = createComponent();
+    private AppComponent component = createComponent();
 
-    protected DemoComponent createComponent() {
-        return DaggerDemoComponent
+    protected AppComponent createComponent() {
+        return DaggerAppComponent
                 .builder()
                 .application(this)
                 .build();
@@ -15,10 +15,10 @@ public class DemoApplication extends Application {
 
     public ActivityInjector getFragmentInjector() {
         return DaggerActivityComponent.builder()
-                .demoComponent(this.component).build();
+                .appComponent(this.component).build();
     }
 
-    public DemoComponent component() {
+    public AppComponent component() {
         return component;
     }
 }

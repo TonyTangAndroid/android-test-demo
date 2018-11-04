@@ -33,8 +33,8 @@ public class MainActivity extends Activity implements MainPresenter.MainUI {
         textView.setText(DateUtils.format(dateTime));
     }
 
-    public void testPresenter() {
-        mainPresenter.destroy();
+    public void callPresenterMethod() {
+        mainPresenter.callPresenterMethod();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements MainPresenter.MainUI {
     }
 
     private void inject() {
-        ((DemoApplication) getApplication()).getFragmentInjector().inject(this);
+        ((App) getApplication()).getFragmentInjector().inject(this);
     }
 
 

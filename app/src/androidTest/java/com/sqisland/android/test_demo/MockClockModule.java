@@ -9,13 +9,13 @@ import dagger.Provides;
 public class MockClockModule {
 
     @Provides
-    @ApplicationScope
+    @AppScope
     Clock provideClock() {
         return Mockito.mock(Clock.class);
     }
 
     @Provides
-    @ApplicationScope
+    @AppScope
     MainPresenter provideMainPresenter() {
         return Mockito.mock(MainPresenter.class);
     }

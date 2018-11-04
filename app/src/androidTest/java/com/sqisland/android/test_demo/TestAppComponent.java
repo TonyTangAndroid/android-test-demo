@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import dagger.BindsInstance;
 import dagger.Component;
 
-@ApplicationScope
-@dagger.Component(modules = {SharedPrefModule.class, MockClockModule.class})
-public interface TestAppComponent extends DemoComponent {
+@AppScope
+@dagger.Component(modules = {PrefModule.class, MockClockModule.class})
+public interface TestAppComponent extends AppComponent {
 
     Clock clock();
 

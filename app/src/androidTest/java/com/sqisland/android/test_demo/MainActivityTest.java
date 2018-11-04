@@ -41,7 +41,7 @@ public class MainActivityTest {
     private void inject() {
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        TestMockerApplication app = (TestMockerApplication) instrumentation.getTargetContext().getApplicationContext();
+        TestApp app = (TestApp) instrumentation.getTargetContext().getApplicationContext();
         app.testActivityInjector().inject(this);
 
     }
@@ -64,10 +64,10 @@ public class MainActivityTest {
     }
 
     @Test
-    public void destroy() {
+    public void callPresenterMethod() {
         activityRule.launchActivity(null);
-        activityRule.getActivity().testPresenter();
-        verify(mainPresenter).destroy();
+        activityRule.getActivity().callPresenterMethod();
+        verify(mainPresenter).callPresenterMethod();
         verifyNoMoreInteractions(mainPresenter);
     }
 }

@@ -5,7 +5,7 @@
       android:label="@string/app_name"
       android:icon="@drawable/ic_launcher"
       android:theme="@style/AppTheme"
-      android:name=".DemoApplication">
+      android:name=".App">
     <activity
         android:name=".MainActivity"
         android:label="@string/app_name">
