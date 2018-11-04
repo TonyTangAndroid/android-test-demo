@@ -4,11 +4,11 @@ import javax.inject.Inject;
 
 class MainPresenter {
 
-    private final MainUI notePagingUI;
+    private final MainUI mainUI;
 
     @Inject
-    public MainPresenter() {
-        this.notePagingUI = null;
+    public MainPresenter(MainUI mainUI) {
+        this.mainUI = mainUI;
     }
 
     void callPresenterMethod() {
@@ -19,7 +19,7 @@ class MainPresenter {
     }
 
     void handleError(Throwable throwable) {
-        notePagingUI.handleError(throwable);
+        mainUI.handleError(throwable);
     }
 
     public interface MainUI {

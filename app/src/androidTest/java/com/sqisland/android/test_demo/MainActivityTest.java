@@ -42,8 +42,10 @@ public class MainActivityTest {
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         TestApp app = (TestApp) instrumentation.getTargetContext().getApplicationContext();
-        app.testActivityInjector().inject(this);
 
+        DaggerMainActivityTest_Component.builder()
+                .testAppComponent(app.component())
+                .build().inject(this);
     }
 
     @Test
@@ -64,10 +66,15 @@ public class MainActivityTest {
     }
 
     @Test
-    public void callPresenterMethod() {
+    public void destroy() {
         activityRule.launchActivity(null);
-        activityRule.getActivity().callPresenterMethod();
         verify(mainPresenter).callPresenterMethod();
         verifyNoMoreInteractions(mainPresenter);
+    }
+
+    @ActivityScope
+    @dagger.Component(dependencies = TestAppComponent.class)
+    interface Component {
+        void inject(MainActivityTest activity);
     }
 }

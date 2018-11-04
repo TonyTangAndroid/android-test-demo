@@ -13,10 +13,6 @@ public class App extends Application {
                 .build();
     }
 
-    public ActivityInjector activityInjector() {
-        return DaggerActivityComponent.builder()
-                .appComponent(this.component).build();
-    }
 
     public AppComponent component() {
         return component;

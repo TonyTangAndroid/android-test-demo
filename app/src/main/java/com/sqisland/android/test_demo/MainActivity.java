@@ -9,6 +9,8 @@ import org.joda.time.DateTime;
 
 import javax.inject.Inject;
 
+import dagger.Provides;
+
 public class MainActivity extends Activity implements MainPresenter.MainUI {
     public static final String KEY_MILLIS = "millis";
 
@@ -43,7 +45,33 @@ public class MainActivity extends Activity implements MainPresenter.MainUI {
     }
 
     private void inject() {
-        ((App) getApplication()).activityInjector().inject(this);
+        DaggerMainActivity_Component.builder()
+                .module(new Module(this))
+                .appComponent(((App) getApplication()).component())
+                .build().inject(this);
+    }
+
+
+    @ActivityScope
+    @dagger.Component(modules = Module.class, dependencies = AppComponent.class)
+    interface Component {
+        void inject(MainActivity activity);
+    }
+
+    @dagger.Module
+    static class Module {
+
+        private final MainActivity activity;
+
+        Module(MainActivity activity) {
+            this.activity = activity;
+        }
+
+        @ActivityScope
+        @Provides
+        MainPresenter.MainUI ui() {
+            return activity;
+        }
     }
 
 
