@@ -13,6 +13,11 @@ public class DemoApplication extends Application {
                 .build();
     }
 
+    public ActivityInjector getFragmentInjector() {
+        return DaggerActivityComponent.builder()
+                .demoComponent(this.component).build();
+    }
+
     public DemoComponent component() {
         return component;
     }

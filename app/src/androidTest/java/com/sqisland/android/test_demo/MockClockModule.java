@@ -7,6 +7,7 @@ import dagger.Provides;
 
 @Module
 public class MockClockModule {
+
     @Provides
     @ApplicationScope
     Clock provideClock() {

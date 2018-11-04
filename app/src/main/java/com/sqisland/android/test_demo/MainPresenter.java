@@ -7,8 +7,8 @@ class MainPresenter {
     private final MainUI notePagingUI;
 
     @Inject
-    public MainPresenter(MainUI notePagingUI) {
-        this.notePagingUI = notePagingUI;
+    public MainPresenter() {
+        this.notePagingUI = null;
     }
 
     void destroy() {

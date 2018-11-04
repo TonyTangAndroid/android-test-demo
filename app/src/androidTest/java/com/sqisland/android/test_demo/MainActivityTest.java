@@ -8,7 +8,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.joda.time.DateTime;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,11 +41,9 @@ public class MainActivityTest {
     private void inject() {
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        MockDemoApplication app = (MockDemoApplication) instrumentation.getTargetContext().getApplicationContext();
+        TestMockerApplication app = (TestMockerApplication) instrumentation.getTargetContext().getApplicationContext();
+        app.testActivityInjector().inject(this);
 
-        DaggerMainActivityTest_Component.builder()
-                .testAppComponent(((TestAppComponent) app.component()))
-                .build().inject(this);
     }
 
     @Test
@@ -66,21 +63,11 @@ public class MainActivityTest {
         onView(withId(R.id.date)).check(matches(withText("2014-10-15")));
     }
 
-    @Ignore
     @Test
     public void destroy() {
-        DateTime dateTime = new DateTime(2014, 10, 15, 0, 0, 0);
-        Intent intent = new Intent();
-        intent.putExtra(MainActivity.KEY_MILLIS, dateTime.getMillis());
-        activityRule.launchActivity(intent);
-        activityRule.finishActivity();
+        activityRule.launchActivity(null);
+        activityRule.getActivity().testPresenter();
         verify(mainPresenter).destroy();
         verifyNoMoreInteractions(mainPresenter);
-    }
-
-    @ActivityScope
-    @dagger.Component(dependencies = TestAppComponent.class)
-    interface Component {
-        void inject(MainActivityTest activity);
     }
 }

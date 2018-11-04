@@ -16,7 +16,6 @@ public interface TestAppComponent extends DemoComponent {
 
     SharedPreferences sharedPreferences();
 
-
     @Component.Builder
     interface TestBuilder extends Builder {
 
